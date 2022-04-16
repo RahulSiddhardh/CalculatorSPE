@@ -1,9 +1,14 @@
 package calculator;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calculator {
+
+    private static final Logger logger = LogManager.getLogger(Calculator.class);
     public Calculator() {
     }
 
@@ -51,6 +56,7 @@ public class Calculator {
         System.out.println("Addition of " + number1 + ", " + number2);
         double result = number1 + number2;
         System.out.println("RESULT = " + result);
+        logger.info("Executing add function!");
         return result;
     }
 
@@ -58,6 +64,7 @@ public class Calculator {
         System.out.println("Subtraction of " + number1 + ", " + number2);
         double result = number1 - number2;
         System.out.println("RESULT = " + result);
+        logger.info("Executing subtract function!");
         return result;
     }
 }

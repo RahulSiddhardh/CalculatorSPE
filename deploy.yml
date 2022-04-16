@@ -1,0 +1,10 @@
+---
+- name: Pull Docker image of Calculator
+  hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Pull image
+      docker_image:
+        name: luffy024/calculator_image:latest
+        source: pull

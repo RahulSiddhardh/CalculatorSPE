@@ -1,2 +1,2 @@
-[ubuntu18]
-172.16.129.84 ansible_user=luffy
+[ubuntu]
+localhost ansible_user=siddhardh
