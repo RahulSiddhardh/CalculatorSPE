@@ -1,0 +1,47 @@
+pipeline{
+    environment{
+        imageName =""
+    }
+    agent any
+    stages{
+        stage('Step 1: Git Clone'){
+            steps{
+                git 'https://github.com/RahulSiddhardh/CalculatorSPE.git'
+            }
+        }
+        stage('Step 2: Maven Build'){
+            steps{
+                sh 'mvn clean install'
+            }
+        }
+        stage('Step 3: Build Docker Image'){ 
+            steps {
+                script {
+                    docker_image = docker.build "luffy024/calculator_image:latest"
+                }
+            }
+        }
+        stage('Step 4: Push docker image to hub') {
+            steps {
+                script {
+                    docker.withRegistry('', 'docker_luffy') {
+                        docker_image.push()
+                    }
+                }
+            }
+        }
+        stage('Step 5: Ansible Deployment'){
+            steps{
+                ansiblePlaybook becomeUser: null, 
+                colorized: true,
+                credentialsId: 'docker',
+                installation: 'Ansible', 
+                disableHostKeyChecking: true, 
+                inventory: 'inventory', 
+                playbook: 'deploy.yml', 
+                sudoUser: null  
+            }          
+        }   
+    }
+     
+}
