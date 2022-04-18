@@ -37,8 +37,21 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+
         </plugins>
     </build>
+
 
     <dependencies>
         <dependency>
@@ -66,7 +79,13 @@
             <version>2.3</version>
             <type>maven-plugin</type>
         </dependency>
-
     </dependencies>
+
+    <distributionManagement>
+        <site>
+            <id>website</id>
+            <url>scp://www.calculatorspe.com/www/docs/project/</url>
+        </site>
+    </distributionManagement>
 
 </project>
