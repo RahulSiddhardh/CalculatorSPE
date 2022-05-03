@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class Calculator {
 
+
+
     private static final Logger logger = LogManager.getLogger(Calculator.class);
     public Calculator() {
     }
@@ -33,7 +35,7 @@ public class Calculator {
                 System.out.print("\tEnter the second number : ");
                 number2 = scanner.nextDouble();
             } catch (InputMismatchException error) {
-                System.out.println("Invalid input, Entered input is not a number");
+                System.out.println("Invalid input, Entered input is not a number:");
                 return;
             }
             switch (choice) {
